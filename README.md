@@ -1,0 +1,22 @@
+# LLD — Top 20 Problems
+
+- [ ] **01. [Parking Lot]()**
+- [ ] **02. [Elevator System]()**
+- [ ] **03. [Vending Machine]()**
+- [ ] **04. [ATM]()**
+- [ ] **05. [Library Management System]()**
+- [ ] **06. [Splitwise]()**
+- [ ] **07. [Tic-Tac-Toe]()**
+- [ ] **08. [Chess]()**
+- [ ] **09. [Snake and Ladder]()**
+- [ ] **10. [Deck of Cards]()**
+- [ ] **11. [Car Rental System]()**
+- [ ] **12. [Movie Ticket Booking]()**
+- [ ] **13. [Hotel Management System]()**
+- [ ] **14. [Restaurant Management System]()**
+- [ ] **15. [Meeting Scheduler]()**
+- [ ] **16. [Calendar System]()**
+- [ ] **17. [File System]()**
+- [ ] **18. [Logger]()**
+- [ ] **19. [LRU Cache]()**
+- [ ] **20. [Task Scheduler]()**
