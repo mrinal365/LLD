@@ -1,0 +1,32 @@
+//without state pattern
+class Light {
+  isOn = false;
+
+  pressSwitch() {
+    if (this.isOn) {
+      this.isOn = false;
+      console.log("Light turned OFF");
+    } else {
+      this.isOn = true;
+      console.log("Light turned ON");
+    }
+  }
+}
+
+
+//with state pattern
+interface State {
+  pressSwitch(): void;
+}
+
+class OnState implements State {
+  pressSwitch() {
+    console.log("Turn OFF the light");
+  }
+}
+
+class OffState implements State {
+  pressSwitch() {
+    console.log("Turn ON the light");
+  }
+}
