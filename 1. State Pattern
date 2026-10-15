@@ -1,0 +1,89 @@
+
+interface MachineState {
+  insertCoin(): void;
+  selectProduct(): void;
+  dispense(): void;
+}
+
+class VendingMachine {
+  private state!: MachineState;
+
+  constructor() {
+    this.setState(new NoMoneyState(this));
+  }
+
+  setState(state: MachineState): void {
+    this.state = state;
+  }
+
+  insertCoin(): void {
+    this.state.insertCoin();
+  }
+
+  selectProduct(): void {
+    this.state.selectProduct();
+  }
+
+  dispense(): void {
+    this.state.dispense();
+  }
+}
+
+class NoMoneyState implements MachineState {
+  constructor(private machine: VendingMachine) {}
+
+  insertCoin(): void {
+    console.log("Coin accepted");
+    this.machine.setState(new HasMoneyState(this.machine));
+  }
+
+  selectProduct(): void {
+    console.log("Please insert a coin first");
+  }
+
+  dispense(): void {
+    console.log("No payment received");
+  }
+}
+
+class HasMoneyState implements MachineState {
+  constructor(private machine: VendingMachine) {}
+
+  insertCoin(): void {
+    console.log("Additional coin rejected");
+  }
+
+  selectProduct(): void {
+    console.log("Product selected");
+    this.machine.setState(new DispensingState(this.machine));
+  }
+
+  dispense(): void {
+    console.log("Select a product first");
+  }
+}
+
+class DispensingState implements MachineState {
+  constructor(private machine: VendingMachine) {}
+
+  insertCoin(): void {
+    console.log("Please wait");
+  }
+
+  selectProduct(): void {
+    console.log("Already dispensing");
+  }
+
+  dispense(): void {
+    console.log("Product dispensed");
+    this.machine.setState(new NoMoneyState(this.machine));
+  }
+}
+
+// Demo
+const machine = new VendingMachine();
+
+machine.selectProduct(); // Please insert a coin first
+machine.insertCoin();    // Coin accepted
+machine.selectProduct(); // Product selected
+machine.dispense();      // Product dispensed
